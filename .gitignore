@@ -1,10 +1,13 @@
 # # Node
-# node_modules/
+node_modules/
 
 # # NPM
-# package.json
-# package-lock.json
+package.json
+package-lock.json
 
 # # SASS & CSS
-# *.scss
-# *.css.map
+*.scss
+*.css.map
+
+# Environment
+*.env

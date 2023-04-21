@@ -11,15 +11,11 @@ class Controller {
                 data: response
             });
         } catch (error) {
-            console.log(error)
-
             res.status(500).send({
                 status: 'FAILED',
                 msg: error
             });
-        }
-
-
+        };
     };
 };
 

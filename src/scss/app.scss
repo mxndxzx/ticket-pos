@@ -24,6 +24,10 @@ $container-max-widths: (
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
+.slide-top {
+    transition: opacity 0.1s linear;
+}
+
 // Custom CSS
 body {
     background: $gray-100;
@@ -34,3 +38,4 @@ body {
     margin: 3rem 0 4rem 0;
     text-align: center;
 }
+

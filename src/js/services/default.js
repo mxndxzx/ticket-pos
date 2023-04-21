@@ -17,7 +17,6 @@ const { exec } = require('child_process');
 
 class Printer {
     async print(data) {
-
         let printer = new ThermalPrinter({
             type: PrinterTypes.EPSON,              // Printer type: 'star' or 'epson'
             interface: "//./COM1",                 // Printer interface
@@ -30,10 +29,6 @@ class Printer {
         
         let isConnected = await printer.isPrinterConnected();       // Check if printer is connected, return bool of status
         let execute = await printer.execute();
-        console.log(!isConnected);
-        console.log(`Default body:: ${data}`);
-        // let execute = printer.execute();                      // Executes all the commands. Returns success or throws error
-        // await printer.raw(Buffer.from(text));    // Print instantly. Returns success or throws error
         
         printer.print(data);
         printer.newLine();

@@ -10769,6 +10769,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.slide-top {
+  transition: opacity 0.1s linear;
+}
+
 body {
   background: #f8f9fa;
   height: 100vh;

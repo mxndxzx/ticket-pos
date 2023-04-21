@@ -16,6 +16,22 @@
         </div>
         <button type="button" class="btn btn-primary position-relative start-50 translate-middle-x py-2 px-4" id="submitBtn">Imprimir</button>
     </form>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div class="toast border-0 bg-warning slide-top" id="alertToast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">Complete el campo!</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div class="toast text-bg-primary border-0 bg-danger slide-top" id="errorToast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">Error en la impresion! Verifique la ticketera</div>
+            </div>
+        </div>
+    </div>
     <script src="src/js/app.js" type="module"></script>
 </body>
 </html>
