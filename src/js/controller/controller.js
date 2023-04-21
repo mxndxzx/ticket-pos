@@ -4,12 +4,22 @@ class Controller {
     async postPrint(req,res) {
         const { body } = req;
 
-        const response = await service.print(body.data);
+        try {
+            const response = await service.print(body.data);
+            res.status(200).send({
+                status: 'OK',
+                data: response
+            });
+        } catch (error) {
+            console.log(error)
 
-        res.status(200).send({
-            status: 'OK',
-            data: response
-        });
+            res.status(500).send({
+                status: 'FAILED',
+                msg: error
+            });
+        }
+
+
     };
 };
 

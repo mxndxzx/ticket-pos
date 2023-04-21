@@ -1,0 +1,36 @@
+// Bootstrap Defaults
+// @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+$indigo:  #6610f2 !default;
+
+$indigo-100: tint-color($indigo, 80%) !default;
+$indigo-200: tint-color($indigo, 60%) !default;
+$indigo-300: tint-color($indigo, 40%) !default;
+$indigo-400: tint-color($indigo, 20%) !default;
+$indigo-500: $indigo !default;
+$indigo-600: shade-color($indigo, 20%) !default;
+$indigo-700: shade-color($indigo, 40%) !default;
+$indigo-800: shade-color($indigo, 60%) !default;
+$indigo-900: shade-color($indigo, 80%) !default;
+
+$primary: $indigo;
+
+$container-max-widths: (
+    sm: 440px,
+    md: 620px,
+    lg: 860px,
+    xl: 1040px,
+    xxl: 1220px
+);
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+// Custom CSS
+body {
+    background: $gray-100;
+    height: 100vh;
+}
+
+.title {
+    margin: 3rem 0 4rem 0;
+    text-align: center;
+}

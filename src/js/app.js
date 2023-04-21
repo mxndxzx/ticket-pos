@@ -1,5 +1,9 @@
 import '../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
 
+// DOM
+const submit = document.querySelector('#submitBtn');
+const field = document.querySelector('#defaultText');
+
 const post = (data) => {
     fetch('http://localhost:1337/api/v1/print', {
         method: 'POST',
@@ -29,5 +33,11 @@ const printTicket = () => {
     };
 };
 
-const submit = document.querySelector('#submitBtn');
-submit.addEventListener('click', printTicket)
+// Events
+submit.addEventListener('click', printTicket);
+field.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' || e.which === 13) {
+        e.preventDefault();
+        return false;
+    };
+});
