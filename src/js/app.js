@@ -14,6 +14,7 @@ async function post(data) {
 
     .then(res => {
         res.json().then(json => {
+            console.log(`Response to front:: ${JSON.stringify(json)}`);
             if (!json.data) {
                 const toastElement = document.querySelector('#errorToast');
                 const toast = new bootstrap.Toast(toastElement, {
@@ -38,7 +39,8 @@ async function printTicket() {
     };
 
     if (text) {
-        post(data);
+        const call = post(data);
+        console.log(`Call:: ${JSON.stringify(call)}`);
     } else {
         const toastElement = document.querySelector('#alertToast');
         const toast = new bootstrap.Toast(toastElement, {
