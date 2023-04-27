@@ -39,8 +39,9 @@ async function printTicket() {
     };
 
     if (text) {
-        const call = post(data);
-        console.log(`Call:: ${JSON.stringify(call)}`);
+        // const call = post(data);
+        // console.log(`Call:: ${JSON.stringify(call)}`);
+        post(data);
     } else {
         const toastElement = document.querySelector('#alertToast');
         const toast = new bootstrap.Toast(toastElement, {
