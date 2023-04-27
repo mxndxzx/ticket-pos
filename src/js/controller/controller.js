@@ -5,7 +5,7 @@ class Controller {
         const { body } = req;
 
         try {
-            const response = await service.print(body.data);
+            const response = await service.prnt(body.data);
             res.status(200).send({
                 status: 'OK',
                 data: response

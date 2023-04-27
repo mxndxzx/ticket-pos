@@ -17,7 +17,8 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "node-thermal-printer": "^4.2.0",
-    "sass": "^1.62.0"
+    "sass": "^1.62.0",
+    "serialport": "^10.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

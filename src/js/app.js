@@ -13,7 +13,17 @@ async function post(data) {
     })
 
     .then(res => {
-        res.msg ? false : true;
+        res.json().then(json => {
+            if (!json.data) {
+                const toastElement = document.querySelector('#errorToast');
+                const toast = new bootstrap.Toast(toastElement, {
+                    animation: true,
+                    autohide: true,
+                    delay: 5000
+                });
+                toast.show();
+            };
+        });
     })
 
     .catch(err => {
@@ -26,18 +36,9 @@ async function printTicket() {
     const data = {
         data: text
     };
-    
+
     if (text) {
-        const call = await post(data);
-        if (!call) {
-            const toastElement = document.querySelector('#errorToast');
-            const toast = new bootstrap.Toast(toastElement, {
-                animation: true,
-                autohide: true,
-                delay: 3000
-            });
-            toast.show();
-        };
+        post(data);
     } else {
         const toastElement = document.querySelector('#alertToast');
         const toast = new bootstrap.Toast(toastElement, {
@@ -46,7 +47,7 @@ async function printTicket() {
             delay: 3000
         });
         toast.show();
-    };
+    }
 };
 
 // Events
