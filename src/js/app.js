@@ -5,7 +5,7 @@ const submit = document.querySelector('#submitBtn');
 const field = document.querySelector('#defaultText');
 
 async function post(data) {
-    await fetch('http://localhost:1337/api/v1/print', {
+    await fetch('/api/v1/print', {
         method: 'POST',
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         mode: "cors",
