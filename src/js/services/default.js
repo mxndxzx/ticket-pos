@@ -1,13 +1,10 @@
 const { ThermalPrinter, PrinterTypes, CharacterSet, BreakLine } = require('node-thermal-printer');
 const { SerialPort } = require('serialport');
 
-// const serialport = new SerialPort({
-//     path: '//./COM1',
-//     baudRate: 9600,
-// }).write('Testing ticket \n');
+const city = 'La Plata';
+let today = new Date().toLocaleDateString();
 
-// console.log(`Serialport:: ${serialport}`)
-
+const serialport = new SerialPort({ path: '//./COM1', baudRate: 9600 });
 
 class Printer {
     async prnt(data) {
@@ -20,15 +17,18 @@ class Printer {
             breakLine: BreakLine.WORD,                // Break line after WORD or CHARACTERS. Disabled with NONE - default: WORD
             width: 40                                 // Number of characters per line
         });
-
+        
+        serialport.write('Lorem ipsum sit dolor amet');
+        
         let isConnected = await printer.isPrinterConnected();
         console.log(`Printer connected? ${isConnected}`);
-
+        
         printer.drawLine();
         printer.print('REGISTRO DE LA PROPIEDAD PCIA. BS. AS.');
         printer.newLine();
         printer.drawLine();
         printer.println(`NE ${data}`);
+        printer.println(`${city} ${today}`);
         printer.newLine();
 
         try {
