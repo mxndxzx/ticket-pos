@@ -4,7 +4,7 @@ const { SerialPort } = require('serialport');
 const city = 'La Plata';
 let today = new Date().toLocaleDateString();
 
-const serialport = new SerialPort({ path: '//./COM1', baudRate: 9600 });
+const serialport = new SerialPort({ path: 'COM1', baudRate: 9600 });
 
 class Printer {
     async prnt(data) {
@@ -19,7 +19,7 @@ class Printer {
         });
         
         serialport.write('Lorem ipsum sit dolor amet');
-        
+
         let isConnected = await printer.isPrinterConnected();
         console.log(`Printer connected? ${isConnected}`);
         
