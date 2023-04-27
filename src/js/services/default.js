@@ -1,19 +1,19 @@
 const { ThermalPrinter, PrinterTypes, CharacterSet, BreakLine } = require('node-thermal-printer');
 const { SerialPort } = require('serialport');
 
-const serialport = new SerialPort({
-    path: '//./COM1',
-    baudRate: 9600,
-}).write('Testing ticket \n');
+// const serialport = new SerialPort({
+//     path: '//./COM1',
+//     baudRate: 9600,
+// }).write('Testing ticket \n');
 
-console.log(`Serialport:: ${serialport}`)
+// console.log(`Serialport:: ${serialport}`)
 
 
 class Printer {
     async prnt(data) {
         let printer = new ThermalPrinter({
             type: PrinterTypes.EPSON,                 // Printer type: 'star' or 'epson'
-            interface: process.argv[2],               // Printer interface
+            interface: '//./COM1',               // Printer interface
             characterSet: CharacterSet.PC852_LATIN2,  // Printer character set - default: SLOVENIA
             removeSpecialCharacters: false,           // Removes special characters - default: false
             lineCharacter: "-",                       // Set character for lines - default: "-"
