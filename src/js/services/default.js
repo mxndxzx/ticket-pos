@@ -1,5 +1,4 @@
 const { ThermalPrinter, PrinterTypes, CharacterSet, BreakLine } = require('node-thermal-printer');
-const { argv } = require('node:process');
 
 const city = 'La Plata';
 let today = new Date().toLocaleDateString();
@@ -8,7 +7,7 @@ class Printer {
     async prnt(data) {
         let printer = new ThermalPrinter({
             type: PrinterTypes.EPSON,                 // Printer type: 'star' or 'epson'
-            interface: argv[2],               // Printer interface
+            interface: process.argv[2],               // Printer interface
             characterSet: CharacterSet.PC852_LATIN2,  // Printer character set - default: SLOVENIA
             removeSpecialCharacters: false,           // Removes special characters - default: false
             lineCharacter: "-",                       // Set character for lines - default: "-"
