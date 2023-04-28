@@ -1,5 +1,5 @@
 const { ThermalPrinter, PrinterTypes, CharacterSet, BreakLine } = require('node-thermal-printer');
-const { SerialPort } = require('serialport');
+const { argv } = require('node:process');
 
 const city = 'La Plata';
 let today = new Date().toLocaleDateString();
@@ -8,7 +8,7 @@ class Printer {
     async prnt(data) {
         let printer = new ThermalPrinter({
             type: PrinterTypes.EPSON,                 // Printer type: 'star' or 'epson'
-            interface: 'COM1',               // Printer interface
+            interface: argv[2],               // Printer interface
             characterSet: CharacterSet.PC852_LATIN2,  // Printer character set - default: SLOVENIA
             removeSpecialCharacters: false,           // Removes special characters - default: false
             lineCharacter: "-",                       // Set character for lines - default: "-"
@@ -16,24 +16,27 @@ class Printer {
             width: 40                                 // Number of characters per line
         });
 
-        let isConnected = await printer.isPrinterConnected();
-        console.log(`Printer connected? ${isConnected}`);
-        
-        printer.drawLine();
-        printer.print('REGISTRO DE LA PROPIEDAD PCIA. BS. AS.');
-        printer.newLine();
-        printer.drawLine();
-        printer.println(`NE ${data}`);
-        printer.println(`${city} ${today}`);
-        printer.newLine();
+        const layout = () => {
+            printer.drawLine();
+            printer.print('REGISTRO DE LA PROPIEDAD PCIA. BS. AS.');
+            printer.newLine();
+            printer.drawLine();
+            printer.println(`NE ${data}`);
+            printer.println(`${city} ${today}`);
+            printer.newLine();
+        };
 
+        let isConnected = await printer.isPrinterConnected();
+        console.log(isConnected);
+        
         try {
-            await printer.execute();
-            return data
-        } catch (err) {
-            console.log(`Default error:: ${err}`)
-            throw err
-        }
+            layout();
+            const execute = await printer.execute();
+            console.log(`Execute:: ${execute}`);
+            return data;
+        } catch (error) {
+            throw error;
+        };
     };
 };
 

@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.listen(port, host, () => {
-    console.log(`App running on 1337`);
+    console.log(`API running`);
 });
 
 app.use(express.static(__dirname));
